@@ -37,6 +37,7 @@ button{
 
 `
 
+
 import {redirect} from '../index.js'
 import {saveToLocalStorage} from './utils.js'
 export class RegisterScreen extends HTMLElement{
@@ -124,10 +125,10 @@ export class RegisterScreen extends HTMLElement{
             else{
                 firebase.firestore().collection('users').add(user)
                 alert("dang ky thanh cong")
-                redirect('login')
+                router.navigate('/login');
             }
         })
-        this._shadowRoot.getElementById('redirect').addEventListener('click',()=>redirect('login'))
+        this._shadowRoot.getElementById('redirect').addEventListener('click',()=>router.navigate('login'))
        
     }
          setError(id,message) {
@@ -199,15 +200,15 @@ export class LogInScreen extends HTMLElement{
                 alert ("Log in successful")
                 
                 saveToLocalStorage('currentUser',getDataFromDocs(check)[0])
-                redirect('story')
+                router.navigate('/story');
             }
             else{
                 
                 alert("Email not signed up or Password Incorrect")
-                redirect('register')
+                router.navigate('/register');
             }
         })
-        this._shadowRoot.getElementById('redirect').addEventListener('click',()=>redirect('register'))
+        this._shadowRoot.getElementById('redirect').addEventListener('click',()=>router.navigate('/register'));
        
     }
          setError(id,message) {

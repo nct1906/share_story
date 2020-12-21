@@ -11,8 +11,10 @@ export class ListPost extends HTMLElement{
         const listPost=getDataFromDocs(res)
         let html=''
         listPost.forEach(element=>{
+            let imgSrc=(element.files && element.files.length>0)?element.files[0]: ''
             html+=`
-            <post-item time="${element.createdAt}" author="${element.authorName}" content="${element.content}"></post-item>`
+        
+            <post-item time="${element.createdAt}" author="${element.authorName}" content="${element.content}" img="${imgSrc}"></post-item>`
         })
         
         this._shadowRoot.innerHTML=`
@@ -44,7 +46,6 @@ export class ListPost extends HTMLElement{
         postItem.setAttribute('author',data.authorName)
         postItem.setAttribute('content',data.content)
         const parent=this._shadowRoot.querySelector('.list-posts')
-        console.log(parent)
         parent.insertBefore(postItem,parent.firstChild)
     }
 }

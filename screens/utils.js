@@ -81,3 +81,15 @@ export function convertDate(dateStr){
     const minutes=date.getMinutes()>10? date.getMinutes():'0'+date.getMinutes()
     return `${day}/${month}/${year} ${hour}:${minutes}`
 }
+export async function uploadFileToStorage(file){
+    //tao duong day den file day
+    const fileName=file.name
+    const filePath=`file/${fileName}`
+    const ref=firebase.storage().ref().child(filePath)
+    await ref.put(file)
+    return getFileUrl(ref)
+}
+
+  export function getFileUrl(fileRef) {
+    return `https://firebasestorage.googleapis.com/v0/b/${fileRef.bucket}/o/${encodeURIComponent(fileRef.fullPath)}?alt=media`
+  }

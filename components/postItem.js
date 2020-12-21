@@ -35,7 +35,9 @@ const style=`
     
         
     }
-    
+    .image img{
+       height:20vh
+    }
     </style>
     `
 import {convertDate} from '../screens/utils.js'
@@ -49,12 +51,16 @@ export class PostItem extends HTMLElement{
     this.author=this.getAttribute('author')
     this.time=convertDate(this.getAttribute('time'))
     this.content=this.getAttribute('content')
+    this.img=this.getAttribute('img')
+    const imgElm=this.img  ? `<div class="image"><img src="${this.img}"></div>`: ''
+    
     this._shadowRoot.innerHTML=`
     ${style}
     <div class="list-posts">
         <div class="post-item">
             <div class="author-name">${this.author}</div>
             <div class="time">${this.time}</div>
+            ${imgElm}
             <br>
             <div class="content">
                ${this.content}
