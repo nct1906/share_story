@@ -37,6 +37,7 @@ const style=`
     }
     .image img{
        height:20vh
+       
     }
     </style>
     `

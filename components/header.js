@@ -72,7 +72,7 @@ export class StoryHeader extends HTMLElement{
      
         const btn=this._shadowDom.getElementById('btn')
         
-        btn.addEventListener('click',() => redirect('login'))
+        btn.addEventListener('click',() => router.navigate('login'))
         
         
        

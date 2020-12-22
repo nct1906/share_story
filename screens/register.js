@@ -9,7 +9,7 @@ const style=`
     justify-content:flex-end;
 }
 #register-form{
-    width:30vw;
+    width:30%;
     height:100vh;
     padding:3vw 5vh;
     background-color:#00626F;
@@ -34,7 +34,14 @@ button{
     border:1px solid white;
 
 }
-
+@media only screen and (max-width: 768px) {
+    #register-form{
+        width:100%!important;
+        
+        
+       
+    }
+  }
 `
 
 
